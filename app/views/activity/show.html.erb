@@ -3,3 +3,8 @@
 <div id="activities">
   <%= render partial: "activity", :collection => @activities %>
 </div>
+
+<form>
+  <label>Say something:</label><br>
+  <input type="text" data-behavior="activity_speaker">
+</form>

@@ -10,3 +10,10 @@ App.activity = App.cable.subscriptions.create "ActivityChannel",
 
   speak: (message) ->
     @perform 'speak', message: message
+
+# event発火でspeakを呼べる
+$(document).on 'keypress', '[data-behavior~=activity_speaker]', (event) ->
+  if event.keyCode is 13 # return = send
+    App.activity.speak event.target.value
+    event.target.value = ''
+    event.preventDefault()
