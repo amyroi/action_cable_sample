@@ -8,6 +8,13 @@ class ActivityChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    ActionCable.server.broadcast 'activity', message: data['message']
+    # ② coffeeから渡ってきたメッセージをブロードキャストする。
+    ActionCable.server.broadcast 'activity', message: render_activity(data['message'])
   end
+
+  private
+
+    def render_activity(message)
+      ApplicationController.renderer.render(partial: 'activity/activity', locals: { activity: {title: message} })
+    end
 end

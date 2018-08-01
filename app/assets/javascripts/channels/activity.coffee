@@ -6,9 +6,12 @@ App.activity = App.cable.subscriptions.create "ActivityChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    alert data['message']
+    # ③ ブロードキャストされたデータが渡される
+    $('#activities').append data['message']
+    #alert data['message']
 
   speak: (message) ->
+    # ① フロントからspeakが呼ばれてchannelにメッセージが渡る
     @perform 'speak', message: message
 
 # event発火でspeakを呼べる
