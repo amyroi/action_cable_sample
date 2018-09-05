@@ -5,6 +5,7 @@
 //= require_self
 //= require_tree ./channels
 
+// コンシューマー側(クライアント)での接続
 (function() {
   this.App || (this.App = {});
 

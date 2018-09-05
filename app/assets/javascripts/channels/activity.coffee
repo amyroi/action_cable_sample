@@ -1,4 +1,7 @@
-App.activity = App.cable.subscriptions.create "ActivityChannel",
+# サブスクライバ
+# 受信したデータに応答する機能
+
+App.activity = App.cable.subscriptions.create "ActivityChannel", #ここにchanelに渡すparamsをかける
   connected: ->
     # Called when the subscription is ready for use on the server
 

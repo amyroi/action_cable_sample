@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+# サブスククリプション：購読者のチャネル
+# ユーザーが受信するチャネル
 class ActivityChannel < ApplicationCable::Channel
   def subscribed
+    # ストリーム。サブスクライバ側(cofee)ににルーティングする
     stream_from 'activity'
   end
 
@@ -14,7 +19,7 @@ class ActivityChannel < ApplicationCable::Channel
 
   private
 
-    def render_activity(message)
-      ApplicationController.renderer.render(partial: 'activity/activity', locals: { activity: {title: message} })
-    end
+  def render_activity(message)
+    ApplicationController.renderer.render(partial: 'activity/activity', locals: { activity: { title: message } })
+  end
 end
